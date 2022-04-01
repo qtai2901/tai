@@ -105,21 +105,7 @@ error_detect_depends() {
 
 # Pre-installation settings
 pre_install_docker_compose() {
-  echo -e "[1] 4g.quoctai.xyz"
-  echo -e "[2] 4g.quoctai.xyz"
-  read -p "Web đang sử dụng:" api_host
-  if [ "$api_host" == "1" ]; then
-    api_host="https://4g.quoctai.xyz"
-  elif [ "$api_host" == "2" ]; then
-    api_host="https://4g.quoctai.xyz"
-  else 
-    api_host="https://4g.quoctai.xyz"
-  fi
-
-  echo "--------------------------------"
-  echo "Bạn đã chọn ${api_host}"
-  echo "--------------------------------"
-
+  
   read -p " ID nút (Node_ID):" node_id
   [ -z "${node_id}" ] && node_id=0
   echo "-------------------------------"
@@ -136,12 +122,7 @@ read -p "Giới hạn thiết bị :" DeviceLimit
   
   
   
-  #CertDomain:
-# read -p "CertDomain:" CertDomain
-#  [ -z "${CertDomain}" ] && CertDomain="0"
-#  echo "-------------------------------"
- # echo "CertDomain: ${CertDomain}"
- # echo "-------------------------------"
+  
 }
  
 
@@ -231,10 +212,8 @@ Nodes:
           ALICLOUD_SECRET_KEY: bbb
 EOF
   sed -i "s|NodeID:.*|NodeID: ${node_id}|" ./config.yml
-  sed -i "s|ApiHost:.*|ApiHost: \"${api_host}\"|" ./config.yml
   sed -i "s|DeviceLimit:.*|DeviceLimit: ${DeviceLimit}|" ./config.yml
-  # sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
-}
+  }
 
 # Install docker and docker compose
 install_docker() {
@@ -361,7 +340,7 @@ Install_xrayr() {
 # Initialization step
 clear
 while true; do
-  echo "-----XrayR -----"
+  echo "-----XrayR của Tài copy -----"
   echo "Địa chỉ dự án và tài liệu trợ giúp:  "
   echo "Vui lòng nhập một số để Thực Hiện Câu Lệnh:"
   for ((i = 1; i <= ${#operation[@]}; i++)); do
