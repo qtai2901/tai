@@ -121,11 +121,11 @@ read -p "Giới hạn thiết bị :" DeviceLimit
   echo "-------------------------------"
   
   #CertDomain:
-read -p "ip hoăc domain:" CertDomain
-  [ -z "${CertDomain}" ] && CertDomain="0"
-  echo "-------------------------------"
-  echo "CertDomain: ${CertDomain}"
-  echo "-------------------------------"
+#read -p "ip hoăc domain:" CertDomain
+ # [ -z "${CertDomain}" ] && CertDomain="0"
+ # echo "-------------------------------"
+  #echo "CertDomain: ${CertDomain}"
+  #echo "-------------------------------"
   
   
 }
@@ -218,7 +218,7 @@ Nodes:
 EOF
   sed -i "s|NodeID:.*|NodeID: ${node_id}|" ./config.yml
   sed -i "s|DeviceLimit:.*|DeviceLimit: ${DeviceLimit}|" ./config.yml
-  sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
+ # sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
   }
 
 # Install docker and docker compose
