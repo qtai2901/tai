@@ -121,7 +121,7 @@ read -p "Giới hạn thiết bị :" DeviceLimit
   echo "-------------------------------"
   
   #CertDomain:
-#read -p "CertDomain:" CertDomain
+#read -p "ip hoăc domain:" CertDomain
   #[ -z "${CertDomain}" ] && CertDomain="0"
   #echo "-------------------------------"
  # echo "CertDomain: ${CertDomain}"
@@ -142,7 +142,7 @@ config_docker() {
 version: '3'
 services: 
   xrayr: 
-    image: aikocute/xrayr:latest
+    image: crackair/xrayr:latest
     volumes:
       - ./config.yml:/etc/XrayR/config.yml # thư mục cấu hình bản đồ
       - ./dns.json:/etc/XrayR/dns.json 
