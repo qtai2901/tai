@@ -9,7 +9,7 @@ red='\033[0;31m'
 green='\033[0;32m'
 #yellow='\033[0;33m'
 plain='\033[0m'
-operation=(Install Update UpdateConfig logs restart delete stop)
+operation=(Install stop start Update UpdateConfig logs restart delete)
 # Make sure only root can run our script
 [[ $EUID -ne 0 ]] && echo -e "[${red}Error${plain}] Chưa vào root kìa !, vui lòng xin phép ROOT trước!" && exit 1
 
@@ -336,12 +336,18 @@ delete_xrayr() {
   rm -Rf ${cur_dir}
   echo "đã xóa thành công!"
 }
-
+#Stop
 stop_xrayr() {
   cd ${cur_dir}
   docker-compose down
   echo "Đã dừng!"
+}
+  start_xrayr() {
+  cd ${cur_dir}
+  docker-compose up -d
+  echo "Đã Chạy!"
   }
+
 # Install xrayr
 Install_xrayr() {
   pre_install_docker_compose
@@ -362,7 +368,7 @@ while true; do
   read -p "Vui lòng chọn một số và nhấn Enter (Enter theo mặc định ${operation[0]}):" selected
   [ -z "${selected}" ] && selected="1"
   case "${selected}" in
-  1 | 2 | 3 | 4 | 5 | 6 | 7 |8)
+  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)
     echo
     echo "Bắt Đầu : ${operation[${selected} - 1]}"
     echo
