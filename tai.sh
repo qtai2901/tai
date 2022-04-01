@@ -120,7 +120,12 @@ read -p "Giới hạn thiết bị :" DeviceLimit
   echo "Thiết bị tối đa là: ${DeviceLimit}"
   echo "-------------------------------"
   
-  
+  #CertDomain:
+read -p "CertDomain:" CertDomain
+  [ -z "${CertDomain}" ] && CertDomain="0"
+  echo "-------------------------------"
+  echo "CertDomain: ${CertDomain}"
+  echo "-------------------------------"
   
   
 }
@@ -137,7 +142,7 @@ config_docker() {
 version: '3'
 services: 
   xrayr: 
-    image: aikocute/xrayr:latest
+    image: crackair/xrayr:latest
     volumes:
       - ./config.yml:/etc/XrayR/config.yml # thư mục cấu hình bản đồ
       - ./dns.json:/etc/XrayR/dns.json 
@@ -213,7 +218,7 @@ Nodes:
 EOF
   sed -i "s|NodeID:.*|NodeID: ${node_id}|" ./config.yml
   sed -i "s|DeviceLimit:.*|DeviceLimit: ${DeviceLimit}|" ./config.yml
- # sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
+  sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
   }
 
 # Install docker and docker compose
