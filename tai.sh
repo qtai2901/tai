@@ -368,7 +368,7 @@ while true; do
   read -p "Vui lòng chọn một số và nhấn Enter (Enter theo mặc định ${operation[0]}):" selected
   [ -z "${selected}" ] && selected="1"
   case "${selected}" in
-  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)
+  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 )
     echo
     echo "Bắt Đầu : ${operation[${selected} - 1]}"
     echo
