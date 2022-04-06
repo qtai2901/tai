@@ -105,6 +105,21 @@ error_detect_depends() {
 
 # Pre-installation settings
 pre_install_docker_compose() {
+
+ echo -e "[1] 4g.quoctai.xyz"
+  echo -e "[2] 4g.giare.me"
+  read -p "Web đang sử dụng:" api_host
+  if [ "$api_host" == "1" ]; then
+    api_host="https://4g.quoctai.xyz"
+  elif [ "$api_host" == "2" ]; then
+    api_host="https://4g.giare.me"
+  else 
+    api_host="https://4g.quoctai.xyz"
+  fi
+
+  echo "--------------------------------"
+  echo "Bạn đã chọn ${api_host}"
+  echo "--------------------------------"
   
   read -p " ID nút (Node_ID):" node_id
   [ -z "${node_id}" ] && node_id=0
@@ -216,6 +231,7 @@ Nodes:
           ALICLOUD_ACCESS_KEY: aaa
           ALICLOUD_SECRET_KEY: bbb
 EOF
+  sed -i "s|ApiHost:.*|ApiHost: \"${api_host}\"|" ./config.yml
   sed -i "s|NodeID:.*|NodeID: ${node_id}|" ./config.yml
   sed -i "s|DeviceLimit:.*|DeviceLimit: ${DeviceLimit}|" ./config.yml
  # sed -i "s|CertDomain:.*|CertDomain: \"${CertDomain}\"|" ./config.yml
