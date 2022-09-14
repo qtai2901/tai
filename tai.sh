@@ -108,11 +108,14 @@ pre_install_docker_compose() {
 
  echo -e "[1] 4ghatde.com"
   echo -e "[2] 4g.giare.me"
+  echo -e "[3] 4gsieure.net"
   read -p "Web đang sử dụng:" api_host
   if [ "$api_host" == "1" ]; then
     api_host="https://4ghatde.com"
   elif [ "$api_host" == "2" ]; then
     api_host="https://4g.giare.me"
+    elif [ "$api_host" == "3" ]; then
+    api_host="https://4gsieure.net"
   else 
     api_host="https://4ghatde.com"
   fi
